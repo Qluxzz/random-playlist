@@ -8,11 +8,11 @@ This script creates random Spotify playlists
 
  Example Output:
 
- ![Example Output](example.png)
+ ![Example Output](example.PNG)
 
  Available Arguments:
  
- ![Available Arguments](example2.png)
+ ![Available Arguments](example2.PNG)
 
 # Installation
 This script depends on 
