@@ -11,3 +11,11 @@ This script depends on
 * spotipy, python wrapper for the spotify web api
 * tqdm, used for progress bars
 * Spotify Web Api Key which can be found here https://developer.spotify.com/my-applications/#!/
+* config file called 'settings.ini' which should look like this:
+
+```
+[DEFAULT]
+SPOTIPY_CLIENT_ID = 'your client id'
+SPOTIPY_CLIENT_SECRET = 'your client secret'
+SPOTIPY_REDIRECT_URI = 'your redirect uri'
+```
