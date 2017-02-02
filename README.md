@@ -6,6 +6,14 @@ This script creates random Spotify playlists
  
  This above example would create a random playlist with 10 tracks by Tom Petty
 
+ Example Output:
+
+ ![Example Output](example.png)
+
+ Available Arguments:
+ 
+ ![Available Arguments](example2.png)
+
 # Installation
 This script depends on 
 * spotipy, python wrapper for the spotify web api
