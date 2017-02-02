@@ -8,6 +8,7 @@ import datetime
 import configparser
 import spotipy
 import spotipy.util as util
+from tqdm import tqdm
 
 def get_query(arguments):
     query = ''
@@ -21,6 +22,8 @@ def get_query(arguments):
 
 def add_tracks_to_playlist(_spotipy, username, playlist_id, track_ids):
     if len(track_ids) > 100:
+        pbar = tqdm(total=len(track_ids))
+        print('Adding tracks to playlist:')
         ids =  []
         for amount in range(0, len(track_ids), 100):
             if amount + 100 > len(track_ids):
@@ -28,6 +31,7 @@ def add_tracks_to_playlist(_spotipy, username, playlist_id, track_ids):
             else:
                 ids = track_ids[amount:amount + 100]
             _spotipy.user_playlist_add_tracks(username, playlist_id, ids)
+            pbar.update(len(ids))
     else:
         _spotipy.user_playlist_add_tracks(username, playlist_id, track_ids)
 
@@ -35,11 +39,12 @@ def get_random_character():
     return chr(random.randint(0, 0x10FFFF))
 
 def get_tracks(_spotipy, amount, username, arguments):
-    print(arguments)
     """ Gets amount of tracks of genre and adds them to a playlist """
     ids = set()
     query = get_query(arguments)
 
+    print('Getting Tracks:')
+    pbar = tqdm(total=amount)
     while len(ids) < amount:
         try:
             results = _spotipy.search(q=query, type='track', limit=1)
@@ -71,6 +76,7 @@ def get_tracks(_spotipy, amount, username, arguments):
         if number_of_tracks >= 1:
             track_id = tracks[random.randint(0, number_of_tracks - 1)]['id']
             ids.add(track_id)
+            pbar.update(1)
     # Create a new playlist
     playlistname = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
     if 'playlistname' in arguments and arguments['playlistname'] != None:
