@@ -2,7 +2,7 @@
 This script creates random Spotify playlists
 
 # Example
- random_track.py --amount 10 --artist "Tom Petty" --username <spotify-username>
+ random-playlist.py --amount 10 --artist "Tom Petty" --username 'your-username-here'
  
  This above example would create a random playlist with 10 tracks by Tom Petty
 
